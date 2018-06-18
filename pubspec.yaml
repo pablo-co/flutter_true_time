@@ -1,0 +1,18 @@
+name: true_time
+description: NTP library for Flutter. Get the true time impervious to device clock changes.
+version: 0.0.1
+author: Pablo Cárdenas <pcardenasoliveros@gmail.com>
+homepage: https://github.com/orale-tv/flutter_true_time
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: tv.orale.truetime
+    pluginClass: TrueTimePlugin
+
+environment:
+  sdk: ">=2.0.0-dev.28.0 <3.0.0"
+  flutter: ">=0.1.4 <2.0.0"
