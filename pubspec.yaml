@@ -1,6 +1,6 @@
 name: true_time
 description: NTP library for Flutter. Get the true time impervious to device clock changes.
-version: 0.0.1
+version: 0.0.2
 author: Pablo Cárdenas <pcardenasoliveros@gmail.com>
 homepage: https://github.com/orale-tv/flutter_true_time
 
