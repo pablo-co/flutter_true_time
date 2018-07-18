@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/services.dart';
+
 /// NTP client for Flutter. Calculate the date and time "now" impervious to manual changes to device clock time.
 /// In certain applications it becomes important to get the real or "true" date and time. On most devices, if the clock has been changed manually, then a new Date() instance gives you a time impacted by local settings.
 /// Users may do this for a variety of reasons, like being in different timezones, trying to be punctual by setting their clocks 5 – 10 minutes early, etc. Your application or service may want a date that is unaffected by these changes and reliable as a source of truth. TrueTime gives you that.
