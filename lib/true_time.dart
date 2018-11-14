@@ -11,9 +11,25 @@ class TrueTime {
 
   /// Returns `true` if TrueTime was initialized.
   /// This function must be called and verified to have returned true before any call to [now] is made.
-  static Future<bool> init() async {
+  static Future<bool> init({
+    int timeout = 5000,
+    int retryCount = 3,
+    bool logging = true,
+    String ntpServer = 'ntp.google.com',
+  }) async {
+    assert(timeout > 0);
+    assert(retryCount >= 0);
+    assert(ntpServer != null);
+    assert(ntpServer.isNotEmpty);
+    final Map<String, dynamic> params = <String, dynamic>{
+      'timeout': timeout,
+      'retryCount': retryCount,
+      'logging': logging,
+      'ntpServer': ntpServer,
+    };
+
     try {
-      return await _channel.invokeMethod('init');
+      return await _channel.invokeMethod('init', params);
     } catch (e) {
       return false;
     }
