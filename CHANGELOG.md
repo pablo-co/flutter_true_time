@@ -1,3 +1,7 @@
+## [0.1.0]
+
+* Allow configuration of the SNTP request ([`#2`][2])
+
 ## [0.0.2]
 
 * Fix compilation error due to missing import ([`#1`][1])
