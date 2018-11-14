@@ -5,6 +5,7 @@ import android.util.Log;
 import com.instacart.library.truetime.TrueTimeRx;
 
 import java.util.Date;
+import java.util.Map;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -32,11 +33,14 @@ public class TrueTimePlugin implements MethodCallHandler {
     public void onMethodCall(MethodCall call, final Result result) {
         switch (call.method) {
             case "init":
+                if (!(call.arguments instanceof Map)) {
+                    throw new IllegalArgumentException("Map argument expected");
+                }
                 TrueTimeRx.build()
-                        .withConnectionTimeout(1_000)
-                        .withRetryCount(3)
-                        .withLoggingEnabled(true)
-                        .initializeRx("time.google.com")
+                        .withConnectionTimeout((int) call.argument("timeout"))
+                        .withRetryCount((int) call.argument("retryCount"))
+                        .withLoggingEnabled((Boolean) call.argument("logging"))
+                        .initializeRx((String) call.argument("ntpServer"))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Consumer<Date>() {
