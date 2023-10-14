@@ -1,9 +1,9 @@
 import Flutter
-import TrueTime
 import UIKit
+import TrueTime
 
 public class SwiftTrueTimePlugin: NSObject, FlutterPlugin {
-  public static func register(with registrar: FlutterPluginRegistrar) {
+   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "true_time", binaryMessenger: registrar.messenger())
     let instance = SwiftTrueTimePlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
